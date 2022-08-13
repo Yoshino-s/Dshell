@@ -20,7 +20,7 @@ setup(
     ],
     install_requires=[
         "geoip2",
-        "pcapy",
+        "pcapy-ng",
         "pypacker",
         "pyopenssl",
         "elasticsearch",
