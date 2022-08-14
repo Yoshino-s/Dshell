@@ -31,8 +31,8 @@ from dshell.dshellgeoip import DshellGeoIP, DshellFailedGeoIP
 # third-party imports
 import pcapy
 from pypacker import pypacker
-from pypacker.layer12 import can, ethernet, ieee80211, linuxcc, ppp, pppoe, radiotap
-from pypacker.layer3 import ip, ip6, icmp, icmp6
+from pypacker.layer12 import ethernet, ieee80211
+from pypacker.layer3 import ip, ip6
 from pypacker.layer4 import tcp, udp
 
 
@@ -1585,7 +1585,7 @@ class Blob(object):
             # Check if we have missing packets.
             if seq - initial_seq != len(data):
                 # buffer data with null bytes
-                data += b'\x00' * (seq - initial_seq - len(data))
+                data += f"<-----Padding {seq - initial_seq - len(data)}----->".encode()
 
             data += packet.data
         data = bytes(data)
